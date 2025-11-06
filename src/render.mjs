@@ -19,12 +19,25 @@ program
   .option("--quality <1-100>", "JPEG quality", (v) => parseInt(v, 10), 90)
   .option("--background <value>", "Background for PNG/JPEG (css color or 'transparent')", "white")
   .option("--pdf <paper>", "PDF paper: a4 | letter | custom (uses width/height in px)")
+  .option("--timestamp", "Append -YYYYMMDD-HHMMSS to output prefix for history stacking", false)
   .parse(process.argv);
 
 const opts = program.opts();
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
+}
+
+function timestampSuffix() {
+  const d = new Date();
+  const pad = (n) => String(n).padStart(2, "0");
+  const yyyy = d.getFullYear();
+  const MM = pad(d.getMonth() + 1);
+  const dd = pad(d.getDate());
+  const HH = pad(d.getHours());
+  const mm = pad(d.getMinutes());
+  const ss = pad(d.getSeconds());
+  return `-${yyyy}${MM}${dd}-${HH}${mm}${ss}`;
 }
 
 function outPrefix() {
@@ -48,7 +61,10 @@ function paperFormat(paper) {
     process.exit(1);
   }
 
-  const outBase = outPrefix();
+  let outBase = outPrefix();
+  if (opts.timestamp) {
+    outBase += timestampSuffix();
+  }
   ensureDir(path.dirname(outBase));
 
   const browser = await puppeteer.launch({ headless: true });

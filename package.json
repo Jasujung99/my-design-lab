@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "render": "node src/render.mjs --input src/templates/sample/index.html --out exports/sample --width 1200 --height 628 --formats png,jpeg,pdf --scale 2",
-    "render:pdf": "node src/render.mjs --input src/templates/sample/index.html --out exports/sample-a4 --pdf a4",
-    "render:py": "python3 src/python/render.py --input src/templates/sample/index.html --out exports/sample-py --width 1200 --height 628 --formats png,jpeg,pdf --scale 2",
-    "render:py:pdf": "python3 src/python/render.py --input src/templates/sample/index.html --out exports/sample-py-a4 --pdf a4"
+    "render": "node src/render.mjs --input src/templates/sample/index.html --out exports/sample/sample --width 1200 --height 628 --formats png,jpeg,pdf --scale 2",
+    "render:ts": "node src/render.mjs --input src/templates/sample/index.html --out exports/sample/sample --width 1200 --height 628 --formats png,jpeg,pdf --scale 2 --timestamp",
+    "render:pdf": "node src/render.mjs --input src/templates/sample/index.html --out exports/sample/sample-a4 --pdf a4",
+    "render:py": "python3 src/python/render.py --input src/templates/sample/index.html --out exports/sample/sample-py --width 1200 --height 628 --formats png,jpeg,pdf --scale 2",
+    "render:py:pdf": "python3 src/python/render.py --input src/templates/sample/index.html --out exports/sample/sample-py-a4 --pdf a4",
+    "watch": "chokidar 'src/templates/sample/**/*' -c 'npm:render:ts'",
+    "watch:py": "chokidar 'src/templates/sample/**/*' -c 'npm:render:py'"
   },
   "dependencies": {
     "commander": "^12.1.0",
@@ -15,6 +18,7 @@
   },
   "devDependencies": {
     "eslint": "^9.12.0",
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "chokidar-cli": "^3.0.0"
   }
 }
