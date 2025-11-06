@@ -16,13 +16,14 @@
     </style>
   </head>
   <body>
-    <div class="page">
+    <!-- 배경 이미지를 꽉 채우려면 아래 style의 --bg-image 경로만 교체하세요. -->
+    <div class="page bg-cover" style="--bg-image: url('../../../assets/a4/space.jpg'); background-image: var(--bg-image);">
       <main class="canvas">
         <div class="badge">A4 TEMPLATE</div>
         <h1 class="title">A4 포맷 디자인</h1>
         <p class="subtitle">인쇄/배포용 문서, 보고서, 전단지 등에 적합한 비율</p>
 
-        <div class="row">
+        <div class="row" style="backdrop-filter: blur(2px); background: rgba(0,0,0,.15); padding: 8px 12px; border-radius: 8px; width: fit-content;">
           <img class="logo" src="../../../assets/logo.svg" alt="logo" />
           <div class="cta">Create · Render · Publish</div>
         </div>
