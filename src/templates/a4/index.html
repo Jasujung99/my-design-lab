@@ -7,8 +7,12 @@
     <!-- 공통/레이아웃/테마 CSS (테마만 교체해서 사용 가능) -->
     <link href="../common/base.css" rel="stylesheet" />
     <link href="../common/paper-a4.css" rel="stylesheet" />
-    <!-- 기본 테마: theme-slate.css, 대체: theme-blue.css -->
-    <link href="../themes/theme-slate.css" rel="stylesheet" />
+  <!-- 기본 테마: theme-slate.css, 대체: theme-blue.css -->
+  <link href="../themes/theme-slate.css" rel="stylesheet" />
+  <!-- 폰트: 한국어(Noto Sans KR), 영어(Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
       /* A4 프레임 시각 보조용 그림자(화면에서만) */
       .page {
@@ -20,22 +24,54 @@
       /* 캔버스의 기본 배경(radial-gradient)을 제거해 배경 이미지가 보이게 함 */
       .canvas { background: transparent !important; }
       @media print { .page { box-shadow: none; border: none; } }
+
+      /* 색/타이포 설정 (배경 가독성을 위한 그림자 포함) */
+      :root { --accent: #f59e0b; }
+      .wrap { max-width: 860px; margin: 0 auto; padding: 64px 72px; }
+      .en { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans KR", sans-serif; }
+      .kr { font-family: "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+      .shadow { text-shadow: 0 2px 8px rgba(0,0,0,.45); }
+
+      .title { font-family: Inter, ui-sans-serif, system-ui; font-weight: 800; font-size: 64px; letter-spacing: .5px; margin: 0 0 8px; }
+      .underline { width: 160px; height: 6px; background: var(--accent); border-radius: 3px; margin: 8px 0 40px; }
+
+      .heading { font-size: 28px; font-weight: 700; margin: 24px 0 12px; }
+      .lead { font-size: 20px; color: #e5e7eb; margin: 0 0 28px; }
+
+      .points { display: grid; gap: 8px; margin: 8px 0 28px; }
+      .points p { margin: 0; font-size: 18px; color: #e5e7eb; }
+      .points .accent { color: var(--accent); font-weight: 700; }
+
+      .note { margin: 24px 0 40px; font-size: 18px; color: #f3f4f6; }
+      .event { margin-top: 24px; }
+      .datetime { font-size: 26px; font-weight: 700; letter-spacing: .2px; }
+      .place { font-size: 20px; color: #e5e7eb; margin-top: 8px; }
     </style>
   </head>
   <body>
-    <!-- 배경 이미지는 .page CSS의 url(...) 경로만 바꾸면 됩니다. -->
+    <!-- 텍스트만 남기고, 배경 위 가독성을 위해 그림자 적용 -->
     <div class="page">
       <main class="canvas">
-        <div class="badge">A4 TEMPLATE</div>
-        <h1 class="title">A4 포맷 디자인</h1>
-        <p class="subtitle">인쇄/배포용 문서, 보고서, 전단지 등에 적합한 비율</p>
+        <div class="wrap shadow">
+          <h1 class="title en">Welcoming Day!</h1>
+          <div class="underline"></div>
 
-        <div class="row" style="backdrop-filter: blur(2px); background: rgba(0,0,0,.15); padding: 8px 12px; border-radius: 8px; width: fit-content;">
-          <img class="logo" src="../../../assets/logo.svg" alt="logo" />
-          <div class="cta">Create · Render · Publish</div>
+          <div class="heading kr">삼시세톡 3주년을 맞아</div>
+          <p class="lead kr">신규 회원 만남과 소통의 장을 마련했어요.</p>
+
+          <div class="points kr">
+            <p>기존 회원도 환영!</p>
+            <p>신규 회원도 환영!</p>
+            <p class="accent">관심 회원은 더욱 환영!</p>
+          </div>
+
+          <p class="note kr">가볍게 만나 즐거운 시간 만들어요~</p>
+
+          <section class="event">
+            <p class="datetime en">2025.11.12. 수요일 오후 7시</p>
+            <p class="place kr">해움한국어에서 만나요~</p>
+          </section>
         </div>
-
-        <footer class="footer">@Jasujung99 · A4</footer>
       </main>
     </div>
   </body>
