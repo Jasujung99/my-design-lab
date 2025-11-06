@@ -7,12 +7,12 @@
     <!-- 공통/레이아웃/테마 CSS (테마만 교체해서 사용 가능) -->
     <link href="../common/base.css" rel="stylesheet" />
     <link href="../common/paper-a4.css" rel="stylesheet" />
-  <!-- 기본 테마: theme-slate.css, 대체: theme-blue.css -->
-  <link href="../themes/theme-slate.css" rel="stylesheet" />
-  <!-- 폰트: 한국어(Noto Serif KR), 영어(Playfair Display) -->
+    <!-- 기본 테마: theme-slate.css, 대체: theme-blue.css -->
+    <link href="../themes/theme-slate.css" rel="stylesheet" />
+    <!-- 폰트: EN(세리프/산세리프), KR(가독성) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nanum+Pen+Script&family=Nanum+Brush+Script&family=East+Sea+Dokdo&family=Dokdo&family=Gaegu:wght@400;700&family=Dongle:wght@300;400;700&family=Hi+Melody&family=Kirang+Haerang&family=Poor+Story&family=Yeon+Sung&family=Single+Day&family=Montserrat:wght@500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
       /* A4 프레임 시각 보조용 그림자(화면에서만) */
       .page {
@@ -20,63 +20,273 @@
         border: 1px solid rgba(255,255,255,.06);
         /* 배경 이미지를 페이지에 꽉 차게 */
         background: url('../../../assets/a4/space.jpg') center / cover no-repeat;
+        position: relative;
+        overflow: hidden;
+      }
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,0.45);
       }
       /* 캔버스의 기본 배경(radial-gradient)을 제거해 배경 이미지가 보이게 함 */
-      .canvas { background: transparent !important; }
+      .canvas { position: relative; z-index: 1; background: transparent !important; }
       @media print { .page { box-shadow: none; border: none; } }
 
-      /* 색/타이포 설정 (pine + indigo 팔레트) */
+      /* 색/타이포 설정 (navy/khaki 팔레트 + 반투명 패널) */
       :root {
-        --ink: #14213d;
-        --accent-primary: #4338ca;
-        --accent-secondary: #0d9488;
-        --muted: #334155;
+        --ink: #162137;
+        --accent: #b99a58;
+  --muted: #44506a;
+  --muted-soft: #6b748a;
+  --divider: #3c4250;
+        --panel: rgba(245,245,245,0.78);
+  --footnote-size: 28px;
       }
-      .wrap { max-width: 860px; margin: 0 auto; padding: 72px 72px 64px; color: var(--ink); }
-      .en { font-family: "Playfair Display", serif; }
-      .kr { font-family: "Noto Serif KR", serif; }
+      .wrap {
+        max-width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 110px 124px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--ink);
+        text-align: center;
+      }
+  .en { font-family: "Montserrat", sans-serif; letter-spacing: 0.4px; }
+  .kr { font-family: "Noto Sans KR", sans-serif; }
+  .font-pacifico { font-family: "Pacifico", cursive; }
+  .font-nanum-pen { font-family: "Nanum Pen Script", cursive; }
+  .font-nanum-brush { font-family: "Nanum Brush Script", cursive; }
+  .font-east-sea-dokdo { font-family: "East Sea Dokdo", cursive; }
+  .font-dokdo { font-family: "Dokdo", cursive; }
+  .font-gaegu { font-family: "Gaegu", cursive; }
+  .font-dongle { font-family: "Dongle", cursive; }
+  .font-hi-melody { font-family: "Hi Melody", cursive; }
+  .font-kirang-haerang { font-family: "Kirang Haerang", cursive; }
+  .font-poor-story { font-family: "Poor Story", cursive; }
+  .font-yeon-sung { font-family: "Yeon Sung", cursive; }
+  .font-single-day { font-family: "Single Day", cursive; }
 
-      .title { font-weight: 700; font-size: 66px; letter-spacing: 1px; margin: 0 0 12px; color: var(--accent-primary); }
-      .underline { width: 168px; height: 5px; background: var(--accent-secondary); border-radius: 3px; margin: 6px 0 44px; }
+  .layout { display: flex; justify-content: center; align-items: flex-start; gap: 36px; padding: 24px 40px; }
+      .font-picker {
+        position: sticky;
+        top: 40px;
+        z-index: 5;
+        background: rgba(255,255,255,0.9);
+        border-radius: 14px;
+        padding: 16px 18px;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+        border: 1px solid rgba(22,33,55,0.08);
+        display: grid;
+        gap: 12px;
+        min-width: 220px;
+      }
+  .render-mode .layout { justify-content: center; padding: 0; }
+  .render-mode .page { box-shadow: none; border: none; }
+  .render-mode .font-picker { display: none !important; }
+      .font-picker label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1.2px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+      .font-picker select { font-size: 14px; padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(22,33,55,0.2); color: var(--ink); background: rgba(255,255,255,0.95); }
+        .font-picker .control-group { display: grid; gap: 6px; }
+        .font-picker select,
+        .font-picker input[type="number"] { font-size: 14px; padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(22,33,55,0.2); color: var(--ink); background: rgba(255,255,255,0.95); }
+        .font-picker input[type="number"] { width: 110px; }
+      @media print { .font-picker { display: none; } }
 
-      .heading { font-size: 30px; font-weight: 600; margin: 16px 0 14px; }
-      .lead { font-size: 20px; line-height: 1.65; margin: 0 0 30px; color: var(--muted); }
+      .font-switch-tagline { transition: font-family 0.3s ease; }
 
-      .points { display: grid; gap: 6px; margin: 6px 0 30px; }
-      .points p { margin: 0; font-size: 18px; color: var(--muted); }
-      .points .accent { color: var(--accent-secondary); font-weight: 700; }
+      .hero { margin-bottom: 72px; position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+      .hero-meta { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 4px; }
+      .note-marker { display: inline-flex; align-items: center; justify-content: center; margin-left: 6px; font-size: 0.7em; color: var(--accent); vertical-align: super; }
+      .footnote {
+        font-size: var(--footnote-size);
+        font-weight: 500;
+        color: var(--muted-soft);
+        text-align: right;
+        margin: 20px 0 0;
+      }
+      .title {
+        font-size: 96px;
+        font-weight: 400;
+        letter-spacing: 1.4px;
+        margin: 0;
+        color: var(--ink);
+        line-height: 1.1;
+        text-shadow: 0 6px 18px rgba(8, 12, 22, 0.35);
+      }
+      .heading { font-size: 32px; font-weight: 600; letter-spacing: 1.2px; color: var(--muted); margin: 0; }
 
-      .note { margin: 24px 0 44px; font-size: 19px; font-weight: 500; }
-      .event { margin-top: 28px; }
-      .datetime { font-size: 26px; font-weight: 600; letter-spacing: .3px; color: var(--accent-primary); }
-      .place { font-size: 20px; margin-top: 10px; color: var(--ink); }
+      .divider {
+        width: 160px;
+        height: 10px;
+        margin: 0 auto 56px;
+        background: var(--divider);
+        border-radius: 999px;
+        opacity: 0.7;
+      }
+
+      .content { margin: 0 auto 52px; max-width: 660px; }
+      .lead { font-size: 28px; line-height: 1.65; color: var(--ink); margin: 0 0 40px; font-weight: 600; }
+      .label { display: inline-block; margin: 0 8px; padding: 4px 10px; border: 1px solid rgba(185,154,88,0.4); border-radius: 999px; font-size: 15px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--accent); background: rgba(185,154,88,0.08); vertical-align: middle; }
+
+      .points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 24px; }
+      .points li { text-align: center; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; }
+      .points li.small { font-size: 24px; }
+      .points li.medium { font-size: 28px; }
+      .points li.large { font-size: 32px; }
+      .points li.accent { color: var(--accent); font-weight: 700; }
+
+  .welcome-line { font-size: 24px; font-weight: 500; color: var(--muted-soft); margin: 32px 0 0; }
+
+      .event {
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid rgba(244, 241, 232, 0.2);
+        position: relative;
+      }
+      .event-grid {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 24px;
+      }
+      .datetime { font-size: 28px; font-weight: 700; letter-spacing: 1.4px; color: var(--ink); margin: 0; text-align: left; text-transform: uppercase; }
+      .place { font-size: 26px; color: var(--accent); font-weight: 700; margin: 0; text-align: right; display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+      .place-icon {
+        width: 26px;
+        height: 26px;
+        opacity: 0.85;
+      }
+      .place-qr {
+        width: 110px;
+        height: 110px;
+        border: 4px solid rgba(22,33,55,0.1);
+        border-radius: 12px;
+        padding: 6px;
+        background: rgba(255,255,255,0.9);
+      }
     </style>
   </head>
   <body>
-    <!-- 텍스트만 남기고, 배경 위 가독성을 위해 그림자 적용 -->
-    <div class="page">
-      <main class="canvas">
-  <div class="wrap">
-          <h1 class="title en">Welcoming Day!</h1>
-          <div class="underline"></div>
+    <div class="layout">
+      <!-- 텍스트만 남기고, 배경 위 가독성을 위해 그림자 적용 -->
+      <div class="page">
+        <main class="canvas">
+          <div class="wrap">
+          <header class="hero">
+            <h1 class="title font-pacifico">Welcoming Day</h1>
+            <div class="hero-meta">
+              <p class="heading kr">삼시세독<span class="note-marker">*</span> 3주년 기념</p>
+            </div>
+          </header>
 
-          <div class="heading kr">삼시세톡 3주년을 맞아</div>
-          <p class="lead kr">신규 회원 만남과 소통의 장을 마련했어요.</p>
+          <div class="divider" aria-hidden="true"></div>
 
-          <div class="points kr">
-            <p>기존 회원도 환영!</p>
-            <p>신규 회원도 환영!</p>
-            <p class="accent">관심 회원은 더욱 환영!</p>
+          <div class="content">
+            <p class="lead kr">신<span class="label">new</span> 구<span class="label">old</span> 회원 만남과 소통의 장</p>
+
+            <ul class="points kr">
+              <li class="small">기존 회원도 환영</li>
+              <li class="medium">신규 회원도 환영</li>
+              <li class="large accent">관심 있는 모든 분 환영</li>
+            </ul>
+
+            <p class="welcome-line kr">따뜻한 인사와 이야기로 서로를 맞이해요.</p>
           </div>
 
-          <p class="note kr">가볍게 만나 즐거운 시간 만들어요~</p>
-
           <section class="event">
-            <p class="datetime en">2025.11.12. 수요일 오후 7시</p>
-            <p class="place kr">해움한국어에서 만나요~</p>
+            <div class="event-grid">
+              <p class="datetime kr">2025년 11월 12일 수요일 오후 7시</p>
+              <p class="place kr">
+                <svg class="place-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                </svg>
+                해움한국어
+              </p>
+              <img class="place-qr" src="https://quickchart.io/qr?text=https%3A%2F%2Fmap.naver.com%2Fp%2Fentry%2Fplace%2F1283919586&margin=1&light=ffffff&dark=162137" alt="해움한국어 위치 안내 QR 코드" />
+            </div>
+            <p class="footnote kr font-switch-tagline font-yeon-sung"><span class="note-marker">*</span> 세종 어쩌면 세상의 어제 오늘 내일을 읽는, 삼시세독의 표어이다.</p>
           </section>
+          </div>
+        </main>
+      </div>
+      <div class="font-picker en">
+        <div class="control-group">
+          <label for="font-selector">Handwriting Font</label>
+          <select id="font-selector">
+            <option value="nanum-pen" selected>나눔펜</option>
+            <option value="nanum-brush">나눔브러시</option>
+            <option value="east-sea-dokdo">이스트씨독도</option>
+            <option value="dokdo">독도</option>
+            <option value="gaegu">개구</option>
+            <option value="dongle">동글</option>
+            <option value="hi-melody">하이멜로디</option>
+            <option value="kirang-haerang">기랑해랑</option>
+            <option value="poor-story">푸어스토리</option>
+            <option value="yeon-sung">연성</option>
+            <option value="single-day">싱글데이</option>
+          </select>
         </div>
-      </main>
+        <div class="control-group">
+          <label for="footnote-size">Footnote Size</label>
+          <input id="footnote-size" type="number" min="14" max="30" step="1" value="28" />
+        </div>
+      </div>
     </div>
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const select = document.getElementById('font-selector');
+        const sizeInput = document.getElementById('footnote-size');
+        const classMap = {
+          'nanum-pen': 'font-nanum-pen',
+          'nanum-brush': 'font-nanum-brush',
+          'east-sea-dokdo': 'font-east-sea-dokdo',
+          dokdo: 'font-dokdo',
+          gaegu: 'font-gaegu',
+          dongle: 'font-dongle',
+          'hi-melody': 'font-hi-melody',
+          'kirang-haerang': 'font-kirang-haerang',
+          'poor-story': 'font-poor-story',
+          'yeon-sung': 'font-yeon-sung',
+          'single-day': 'font-single-day'
+        };
+        const targets = Array.from(document.querySelectorAll('.font-switch-tagline'));
+        const allClasses = Object.values(classMap);
+        function applyFont(value) {
+          const targetClass = classMap[value] || classMap['nanum-pen'];
+          targets.forEach(function (el) {
+            allClasses.forEach(function (cls) { el.classList.remove(cls); });
+            el.classList.add(targetClass);
+          });
+        }
+        function applySize(value) {
+          var parsed = parseInt(value, 10);
+          if (Number.isNaN(parsed)) { parsed = 28; }
+          parsed = Math.min(30, Math.max(14, parsed));
+          root.style.setProperty('--footnote-size', parsed + 'px');
+          if (sizeInput) { sizeInput.value = String(parsed); }
+        }
+        function updateRenderMode() {
+          const smallViewport = window.innerWidth <= 1300;
+          document.body.classList.toggle('render-mode', smallViewport);
+        }
+        if (select) {
+          select.addEventListener('change', function (event) {
+            applyFont(event.target.value);
+          });
+          applyFont(select.value);
+        }
+        if (sizeInput) {
+          sizeInput.addEventListener('input', function (event) {
+            applySize(event.target.value);
+          });
+          applySize(sizeInput.value);
+        }
+        updateRenderMode();
+        window.addEventListener('resize', updateRenderMode);
+      })();
+    </script>
   </body>
 </html>

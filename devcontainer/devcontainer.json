@@ -10,7 +10,7 @@
     },
     "ghcr.io/devcontainers/features/git-lfs:1": {}
   },
-  "postCreateCommand": "set -e && git lfs install && (npm ci || npm install) && pip3 install --upgrade pip && pip3 install -r requirements.txt && python3 -m playwright install --with-deps chromium",
+  "postCreateCommand": "set -e && git lfs install && (npm ci || npm install) && npm install @notionhq/client@latest && pip3 install --upgrade pip && pip3 install -r requirements.txt && python3 -m playwright install --with-deps chromium",
   "customizations": {
     "vscode": {
       "extensions": [
