@@ -1,0 +1,14 @@
+/* A4 고정 크기/인쇄 설정 */
+@page { size: A4; margin: 0; }
+
+/* 화면 프리뷰(픽셀 기준) — 1240x1754은 A4 비율(1:1.414)에 근사 */
+.page { width:1240px; height:1754px; margin:0 auto; background:var(--bg); color:var(--fg); display:flex; flex-direction:column; }
+
+/* 여백과 캔버스 기본 배경 */
+.page .canvas { min-height:unset; height:100%; padding:64px; }
+
+/* 인쇄 시 배경 포함 */
+@media print {
+  html, body { background: var(--bg); }
+  .page { page-break-after: always; box-shadow: none !important; }
+}
