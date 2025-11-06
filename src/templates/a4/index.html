@@ -9,10 +9,10 @@
     <link href="../common/paper-a4.css" rel="stylesheet" />
   <!-- 기본 테마: theme-slate.css, 대체: theme-blue.css -->
   <link href="../themes/theme-slate.css" rel="stylesheet" />
-  <!-- 폰트: 한국어(Noto Sans KR), 영어(Inter) -->
+  <!-- 폰트: 한국어(Noto Serif KR), 영어(Playfair Display) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
       /* A4 프레임 시각 보조용 그림자(화면에서만) */
       .page {
@@ -25,34 +25,38 @@
       .canvas { background: transparent !important; }
       @media print { .page { box-shadow: none; border: none; } }
 
-      /* 색/타이포 설정 (배경 가독성을 위한 그림자 포함) */
-      :root { --accent: #f59e0b; }
-      .wrap { max-width: 860px; margin: 0 auto; padding: 64px 72px; }
-      .en { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans KR", sans-serif; }
-      .kr { font-family: "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
-      .shadow { text-shadow: 0 2px 8px rgba(0,0,0,.45); }
+      /* 색/타이포 설정 (pine + indigo 팔레트) */
+      :root {
+        --ink: #14213d;
+        --accent-primary: #4338ca;
+        --accent-secondary: #0d9488;
+        --muted: #334155;
+      }
+      .wrap { max-width: 860px; margin: 0 auto; padding: 72px 72px 64px; color: var(--ink); }
+      .en { font-family: "Playfair Display", serif; }
+      .kr { font-family: "Noto Serif KR", serif; }
 
-      .title { font-family: Inter, ui-sans-serif, system-ui; font-weight: 800; font-size: 64px; letter-spacing: .5px; margin: 0 0 8px; }
-      .underline { width: 160px; height: 6px; background: var(--accent); border-radius: 3px; margin: 8px 0 40px; }
+      .title { font-weight: 700; font-size: 66px; letter-spacing: 1px; margin: 0 0 12px; color: var(--accent-primary); }
+      .underline { width: 168px; height: 5px; background: var(--accent-secondary); border-radius: 3px; margin: 6px 0 44px; }
 
-      .heading { font-size: 28px; font-weight: 700; margin: 24px 0 12px; }
-      .lead { font-size: 20px; color: #e5e7eb; margin: 0 0 28px; }
+      .heading { font-size: 30px; font-weight: 600; margin: 16px 0 14px; }
+      .lead { font-size: 20px; line-height: 1.65; margin: 0 0 30px; color: var(--muted); }
 
-      .points { display: grid; gap: 8px; margin: 8px 0 28px; }
-      .points p { margin: 0; font-size: 18px; color: #e5e7eb; }
-      .points .accent { color: var(--accent); font-weight: 700; }
+      .points { display: grid; gap: 6px; margin: 6px 0 30px; }
+      .points p { margin: 0; font-size: 18px; color: var(--muted); }
+      .points .accent { color: var(--accent-secondary); font-weight: 700; }
 
-      .note { margin: 24px 0 40px; font-size: 18px; color: #f3f4f6; }
-      .event { margin-top: 24px; }
-      .datetime { font-size: 26px; font-weight: 700; letter-spacing: .2px; }
-      .place { font-size: 20px; color: #e5e7eb; margin-top: 8px; }
+      .note { margin: 24px 0 44px; font-size: 19px; font-weight: 500; }
+      .event { margin-top: 28px; }
+      .datetime { font-size: 26px; font-weight: 600; letter-spacing: .3px; color: var(--accent-primary); }
+      .place { font-size: 20px; margin-top: 10px; color: var(--ink); }
     </style>
   </head>
   <body>
     <!-- 텍스트만 남기고, 배경 위 가독성을 위해 그림자 적용 -->
     <div class="page">
       <main class="canvas">
-        <div class="wrap shadow">
+  <div class="wrap">
           <h1 class="title en">Welcoming Day!</h1>
           <div class="underline"></div>
 
