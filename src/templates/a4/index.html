@@ -11,13 +11,20 @@
     <link href="../themes/theme-slate.css" rel="stylesheet" />
     <style>
       /* A4 프레임 시각 보조용 그림자(화면에서만) */
-      .page { box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.2); border: 1px solid rgba(255,255,255,.06); }
+      .page {
+        box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.2);
+        border: 1px solid rgba(255,255,255,.06);
+        /* 배경 이미지를 페이지에 꽉 차게 */
+        background: url('../../../assets/a4/space.jpg') center / cover no-repeat;
+      }
+      /* 캔버스의 기본 배경(radial-gradient)을 제거해 배경 이미지가 보이게 함 */
+      .canvas { background: transparent !important; }
       @media print { .page { box-shadow: none; border: none; } }
     </style>
   </head>
   <body>
-    <!-- 배경 이미지를 꽉 채우려면 아래 style의 --bg-image 경로만 교체하세요. -->
-    <div class="page bg-cover" style="--bg-image: url('../../../assets/a4/space.jpg'); background-image: var(--bg-image);">
+    <!-- 배경 이미지는 .page CSS의 url(...) 경로만 바꾸면 됩니다. -->
+    <div class="page">
       <main class="canvas">
         <div class="badge">A4 TEMPLATE</div>
         <h1 class="title">A4 포맷 디자인</h1>
