@@ -10,7 +10,10 @@
     "render:py": "python3 src/python/render.py --input src/templates/sample/index.html --out exports/sample/sample-py --width 1200 --height 628 --formats png,jpeg,pdf --scale 2",
     "render:py:pdf": "python3 src/python/render.py --input src/templates/sample/index.html --out exports/sample/sample-py-a4 --pdf a4",
     "watch": "chokidar 'src/templates/sample/**/*' -c 'npm:render:ts'",
-    "watch:py": "chokidar 'src/templates/sample/**/*' -c 'npm:render:py'"
+    "watch:py": "chokidar 'src/templates/sample/**/*' -c 'npm:render:py'",
+    "render:a4:png": "node src/render.mjs --input src/templates/a4/index.html --out exports/a4/a4 --width 1240 --height 1754 --formats png --scale 2 --timestamp",
+    "render:a4:pdf": "node src/render.mjs --input src/templates/a4/index.html --out exports/a4/a4 --pdf a4 --timestamp",
+    "watch:a4": "chokidar 'src/templates/a4/**/*' -c 'npm:render:a4:png'"
   },
   "dependencies": {
     "commander": "^12.1.0",
