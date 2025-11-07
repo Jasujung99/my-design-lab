@@ -23,6 +23,15 @@ program
   .parse(process.argv);
 
 const opts = program.opts();
+const formatSource = program.getOptionValueSource("formats");
+
+const resolvedFormats =
+  formatSource === "default" && opts.pdf
+    ? ["pdf"]
+    : (opts.formats || "")
+        .split(",")
+        .map((s) => s.trim().toLowerCase())
+        .filter(Boolean);
 
 function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
@@ -92,12 +101,7 @@ function paperFormat(paper) {
     const fileUrl = "file://" + inputPath;
     await page.goto(fileUrl, { waitUntil: "networkidle0" });
 
-    const formats = opts.formats
-      .split(",")
-      .map((s) => s.trim().toLowerCase())
-      .filter(Boolean);
-
-    if (formats.includes("png")) {
+    if (resolvedFormats.includes("png")) {
       const pngPath = `${outBase}.png`;
       await page.screenshot({
         path: pngPath,
@@ -108,7 +112,7 @@ function paperFormat(paper) {
       console.log(`✓ PNG saved: ${pngPath}`);
     }
 
-    if (formats.includes("jpeg") || formats.includes("jpg")) {
+    if (resolvedFormats.includes("jpeg") || resolvedFormats.includes("jpg")) {
       const jpgPath = `${outBase}.jpg`;
       await page.screenshot({
         path: jpgPath,
@@ -120,7 +124,7 @@ function paperFormat(paper) {
       console.log(`✓ JPEG saved: ${jpgPath}`);
     }
 
-    if (formats.includes("pdf") || opts.pdf) {
+    if (resolvedFormats.includes("pdf") || opts.pdf) {
       const pdfPath = `${outBase}.pdf`;
       const paper = opts.pdf;
       let pdfOptions = { path: pdfPath, printBackground: true };
