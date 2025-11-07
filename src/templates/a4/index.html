@@ -7,8 +7,8 @@
     <!-- 공통/레이아웃/테마 CSS (테마만 교체해서 사용 가능) -->
     <link href="../common/base.css" rel="stylesheet" />
     <link href="../common/paper-a4.css" rel="stylesheet" />
-    <!-- 기본 테마: theme-slate.css, 대체: theme-blue.css -->
-    <link href="../themes/theme-slate.css" rel="stylesheet" />
+  <!-- 기본 테마: theme-slate.css, 대체: theme-blue.css -->
+  <link href="../themes/theme-indigo.css" rel="stylesheet" />
     <!-- 폰트: EN(세리프/산세리프), KR(가독성) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,16 +33,7 @@
       .canvas { position: relative; z-index: 1; background: transparent !important; }
       @media print { .page { box-shadow: none; border: none; } }
 
-      /* 색/타이포 설정 (navy/khaki 팔레트 + 반투명 패널) */
-      :root {
-        --ink: #162137;
-        --accent: #b99a58;
-  --muted: #44506a;
-  --muted-soft: #6b748a;
-  --divider: #3c4250;
-        --panel: rgba(245,245,245,0.78);
-  --footnote-size: 28px;
-      }
+  /* 색/타이포 설정: moved to ../themes/theme-indigo.css */
       .wrap {
         max-width: 100%;
         height: 100%;

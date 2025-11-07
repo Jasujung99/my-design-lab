@@ -1,0 +1,49 @@
+/* theme-indigo.css
+   Extracted from src/templates/a4/index.html
+   Purpose: Provide the color and theme variables for the Welcoming Day poster
+   Usage: linked from templates (e.g. ../themes/theme-indigo.css)
+*/
+:root {
+  /* Primary ink / text color */
+  --ink: #162137;
+
+  /* Accent (warm khaki/gold for highlights) */
+  --accent: #b99a58;
+
+  /* Muted text and supporting tones */
+  --muted: #44506a;
+  --muted-soft: #6b748a;
+
+  /* Divider / subtle dark element */
+  --divider: #3c4250;
+
+  /* Panel / translucent surface used for controls or overlays */
+  --panel: rgba(245,245,245,0.78);
+
+  /* Default footnote size (can be overridden by page JS) */
+  --footnote-size: 28px;
+}
+
+/* Optional helper classes that are theme-specific */
+.label {
+  border-color: rgba(185,154,88,0.4);
+  background: rgba(185,154,88,0.08);
+  color: var(--accent);
+}
+
+.place-qr {
+  background: rgba(255,255,255,0.9);
+}
+
+/* Small palette utilities */
+.muted { color: var(--muted); }
+.muted-soft { color: var(--muted-soft); }
+.accent { color: var(--accent); }
+
+/* Divider visual used in the layout */
+.theme-divider {
+  background: var(--divider);
+  opacity: 0.7;
+}
+
+/* End of theme-indigo.css */
