@@ -19,6 +19,7 @@ program
   .option("--quality <1-100>", "JPEG quality", (v) => parseInt(v, 10), 90)
   .option("--background <value>", "Background for PNG/JPEG (css color or 'transparent')", "white")
   .option("--pdf <paper>", "PDF paper: a4 | letter | custom (uses width/height in px)")
+  .option("--query <string>", "Optional query string to append to file URL (e.g. page=en)")
   .option("--timestamp", "Append -YYYYMMDD-HHMMSS to output prefix for history stacking", false)
   .parse(process.argv);
 
@@ -98,7 +99,8 @@ function paperFormat(paper) {
       });
     }
 
-    const fileUrl = "file://" + inputPath;
+    const query = opts.query ? (opts.query.startsWith("?") ? opts.query : `?${opts.query}`) : "";
+    const fileUrl = "file://" + inputPath + query;
     await page.goto(fileUrl, { waitUntil: "networkidle0" });
 
     if (resolvedFormats.includes("png")) {

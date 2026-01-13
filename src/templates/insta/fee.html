@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>해움한국어 수업 안내 · 1080x1350</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --pine: #0f3d2e;
+        --indigo: #163a5f;
+        --ceramic: #3a7ca5;
+        --amber: #d39b2d;
+        --ink: #eaf6f8;
+        --ink-soft: #cfe3ea;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(160deg, var(--indigo), var(--pine));
+        color: var(--ink);
+        font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        padding: 32px 16px 48px;
+      }
+
+      .app {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        color: var(--ink);
+      }
+
+      .toggle {
+        display: inline-flex;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: #0a0e12;
+        border: 1px solid #1c2b33;
+        color: var(--ink-soft);
+      }
+
+      .toggle button {
+        cursor: pointer;
+        border-radius: 10px;
+        border: 1px solid #2b3c45;
+        background: transparent;
+        color: var(--ink-soft);
+        padding: 8px 12px;
+        font-size: 14px;
+        transition: all 0.18s ease;
+      }
+
+      .toggle button.active {
+        border-color: var(--ceramic);
+        background: #0e141a;
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .frame {
+        position: relative;
+        width: 1080px;
+        height: 1350px;
+        border-radius: 32px;
+        overflow: hidden;
+        background: rgba(8, 12, 16, 0.9);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      .page {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-rows: 5% 20% 30% 30% 5%;
+        row-gap: 24px;
+        height: 100%;
+        padding: 0 24px;
+      }
+
+      .page[aria-hidden="true"] {
+        display: none;
+      }
+
+      .card {
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+        border: 1px solid transparent;
+      }
+
+      .card-soft {
+        background: rgba(12, 16, 20, 0.35);
+      }
+
+      .card-gradient {
+        background: linear-gradient(135deg, rgba(22, 58, 95, 0.95), rgba(15, 61, 46, 0.95));
+        border-color: #1c2b33;
+      }
+
+      .title-block {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo-chip {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        background: var(--ceramic);
+      }
+
+      .h1-kr,
+      .h1-en {
+        margin: 0;
+        font-size: 58px;
+        line-height: 1.06;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        color: #f2f6f8;
+        font-family: "Gowun Batang", serif;
+      }
+
+      .lede-kr,
+      .lede-en {
+        margin: 12px 0 0;
+        color: #e6edf1;
+        line-height: 1.52;
+      }
+
+      .lede-kr {
+        font-size: 27px;
+        font-family: "Gowun Batang", serif;
+      }
+
+      .lede-en {
+        font-size: 25px;
+        max-width: 1000px;
+      }
+
+      .card-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 12px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        background: var(--indigo);
+        border: 1px solid var(--ceramic);
+        color: #eaf6f8;
+        font-size: 26px;
+        font-weight: 700;
+        font-family: "Gowun Batang", serif;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 24px;
+        font-size: 23px;
+        line-height: 1.6;
+      }
+
+      .label {
+        color: var(--ceramic);
+        font-weight: 600;
+      }
+
+      .body-kr {
+        color: #f1f6f8;
+        margin: 6px 0 0;
+      }
+
+      .body-en {
+        color: #dde7eb;
+        margin: 6px 0 0;
+      }
+
+      .note {
+        margin: 6px 0 0;
+        color: var(--amber);
+        font-weight: 600;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 24px;
+        font-size: 23px;
+        line-height: 1.6;
+        color: #f1f6f8;
+      }
+
+      .faq-grid .body-en {
+        color: #dde7eb;
+      }
+
+      .spacer {
+        height: 100%;
+      }
+
+      @media (max-width: 1180px) {
+        .frame {
+          transform: scale(0.9);
+          transform-origin: top center;
+        }
+      }
+
+      @media (max-width: 1040px) {
+        body {
+          padding: 20px 10px;
+        }
+
+        .frame {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1080 / 1350;
+        }
+
+        .page {
+          position: relative;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="toggle" aria-label="페이지 전환">
+        <button type="button" class="active" data-target="kr">Page 1 · KR</button>
+        <button type="button" data-target="en">Page 2 · EN</button>
+      </div>
+
+      <div class="frame">
+        <section class="page" id="page-kr" aria-hidden="false">
+          <div class="spacer" aria-hidden="true"></div>
+
+          <section class="card card-soft" aria-labelledby="cardA-kr-title">
+            <div class="title-block">
+              <div class="logo-chip" aria-hidden="true"></div>
+              <h1 class="h1-kr" id="cardA-kr-title">해움한국어 수업 안내</h1>
+            </div>
+            <p class="lede-kr">
+              해움한국어에서는 학생의 한국어 실력, 학습 목표, 성향 및 사회문화적 배경을 고려한 맞춤형 교육 과정을 제공합니다. 필요한 경우 영어 병행 수업합니다. (한국어 교육, 영어, 미디어, 심리학 전공 / 아주대 우수졸업생)
+            </p>
+          </section>
+
+          <section class="card card-gradient" aria-labelledby="cardB-kr-title">
+            <h2 class="card-title" id="cardB-kr-title">수업 안내</h2>
+            <div class="info-grid">
+              <div>
+                <div class="label">수업 시간</div>
+                <p class="body-kr">1회 기본 50분 (협의 후 연장 가능)</p>
+              </div>
+              <div>
+                <div class="label">수업 일정</div>
+                <p class="body-kr">유동적, 수업 일정에 따라 조율</p>
+              </div>
+              <div>
+                <div class="label">수업료 (월 단위 결제)</div>
+                <p class="body-kr">
+                  주 1회 (월 4회): <span class="nowrap">128,000원</span><br />주 2회 (월 8회): <span class="nowrap">224,000원</span><br />주 3회~5회: 별도 문의
+                </p>
+              </div>
+              <div>
+                <p class="note">
+                  ※ 2달 이상 등록 및 그룹 수업 시 할인<br />※ 사설 수료증 발급 가능
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="card card-gradient" aria-labelledby="cardC-kr-title">
+            <h2 class="card-title" id="cardC-kr-title">자주 묻는 질문 (FAQ)</h2>
+            <div class="faq-grid">
+              <div>
+                <div class="label">Q. 그룹 수업이 있나요?</div>
+                <p class="body-kr">
+                  A. 한국어 수준, 학습 목표, 문화적 배경 등을 고려하여 소규모 그룹 수업 개설을 고려할 수 있습니다. 자세한 내용은 문의 바랍니다.
+                </p>
+                <div class="label">Q. 수업은 어디서 진행되나요?</div>
+                <p class="body-kr">A. 대면(오프라인) 및 비대면(온라인) 수업을 모두 제공합니다.</p>
+              </div>
+              <div>
+                <div class="label">문의</div>
+                <p class="body-kr">더 궁금한 점이 있으시면 네이버 톡톡 또는 0507-1368-2171(문자 가능)로 문의주세요.</p>
+                <p class="note">(DM(개인 메시지)은 확인이 늦을 수 있습니다.)</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="spacer" aria-hidden="true"></div>
+        </section>
+
+        <section class="page" id="page-en" aria-hidden="true">
+          <div class="spacer" aria-hidden="true"></div>
+
+          <section class="card card-soft" aria-labelledby="cardA-en-title">
+            <div class="title-block">
+              <div class="logo-chip" aria-hidden="true"></div>
+              <h1 class="h1-en" id="cardA-en-title">Haeum Korean · Class Information</h1>
+            </div>
+            <p class="lede-en">
+              We provide a tailored curriculum that considers proficiency, goals, learning style, and sociocultural background. Classes can be conducted alongside English when needed. (Majors: Korean Language Education, English, Media, Psychology / Ajou Univ. distinguished graduate)
+            </p>
+          </section>
+
+          <section class="card card-gradient" aria-labelledby="cardB-en-title">
+            <h2 class="card-title" id="cardB-en-title">Class Information</h2>
+            <div class="info-grid">
+              <div>
+                <div class="label">Class Time</div>
+                <p class="body-en">50 minutes per session (extendable upon agreement)</p>
+              </div>
+              <div>
+                <div class="label">Schedule</div>
+                <p class="body-en">We coordinate suitable times through individual consultation.</p>
+              </div>
+              <div>
+                <div class="label">Tuition (monthly payment)</div>
+                <p class="body-en">
+                  Once a week (4 sessions): 128,000 KRW<br />Twice a week (8 sessions): 224,000 KRW<br />3–5 times per week: Contact us
+                </p>
+              </div>
+              <div>
+                <p class="note">*Discounts for 2+ months registration and group classes*<br />*Private certificate available*</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="card card-gradient" aria-labelledby="cardC-en-title">
+            <h2 class="card-title" id="cardC-en-title">Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-grid">
+              <div>
+                <div class="label">Q. Do you offer group classes?</div>
+                <p class="body-en">
+                  A. We can open small group classes considering learners’ level, goals, and cultural background. Contact us for details.
+                </p>
+                <div class="label">Q. Where are classes held?</div>
+                <p class="body-en">A. We offer both in-person (offline) and online classes.</p>
+              </div>
+              <div>
+                <div class="label">Contact</div>
+                <p class="body-en">For inquiries, contact us via Naver TalkTalk or 0507-1368-2171 (text available).</p>
+                <p class="note">(DMs may be checked late.)</p>
+              </div>
+            </div>
+          </section>
+
+          <div class="spacer" aria-hidden="true"></div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const buttons = Array.from(document.querySelectorAll("[data-target]"));
+      const pages = {
+        kr: document.getElementById("page-kr"),
+        en: document.getElementById("page-en"),
+      };
+
+      const setPage = (target) => {
+        if (!target || !pages[target]) return;
+        buttons.forEach((btn) => btn.classList.toggle("active", btn.getAttribute("data-target") === target));
+        Object.entries(pages).forEach(([key, section]) => {
+          if (!section) return;
+          section.setAttribute("aria-hidden", key !== target);
+        });
+      };
+
+      // Initial page from ?page=kr|en (defaults to kr)
+      const params = new URLSearchParams(window.location.search);
+      const initial = params.get("page") === "en" ? "en" : "kr";
+      setPage(initial);
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => setPage(button.getAttribute("data-target")));
+      });
+    </script>
+  </body>
+</html>
