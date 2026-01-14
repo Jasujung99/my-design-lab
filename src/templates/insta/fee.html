@@ -129,7 +129,18 @@
         width: 56px;
         height: 56px;
         border-radius: 10px;
-        background: var(--ceramic);
+        background: var(--indigo);
+        border: 1px solid #1c2b33;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        display: block;
       }
 
       .h1-kr,
@@ -221,6 +232,47 @@
         color: #dde7eb;
       }
 
+      .qr-row {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0;
+        margin-top: 4px;
+        overflow-x: auto;
+        padding-bottom: 0;
+      }
+
+      .qr-card {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        padding: 7px 9px;
+        border-radius: 14px;
+        background: rgba(12, 16, 20, 0.35);
+        border: 1px solid #1c2b33;
+        min-width: 114px;
+        margin-left: -8px;
+      }
+
+      .qr-card:first-child {
+        margin-left: 0;
+      }
+
+      .qr-card img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        border-radius: 10px;
+        background: #fff;
+        padding: 6px;
+      }
+
+      .qr-card span {
+        font-size: 16px;
+        color: var(--ink-soft);
+        font-weight: 600;
+      }
+
       .spacer {
         height: 100%;
       }
@@ -308,8 +360,21 @@
               </div>
               <div>
                 <div class="label">문의</div>
-                <p class="body-kr">더 궁금한 점이 있으시면 네이버 톡톡 또는 0507-1368-2171(문자 가능)로 문의주세요.</p>
-                <p class="note">(DM(개인 메시지)은 확인이 늦을 수 있습니다.)</p>
+                <p class="body-kr">네이버 톡톡, WhatsApp, WeChat 또는 0507-1368-2171(문자나 전화)로 문의 주세요.</p>
+                <div class="qr-row">
+                  <figure class="qr-card">
+                    <img src="../../../assets/naver-talktalk-qr.png" alt="Naver TalkTalk QR" />
+                    <span>네이버 톡톡</span>
+                  </figure>
+                  <figure class="qr-card">
+                    <img src="../../../assets/Screenshot_20260113_160043_WhatsApp.jpg" alt="WhatsApp QR" />
+                    <span>WhatsApp</span>
+                  </figure>
+                  <figure class="qr-card">
+                    <img src="../../../assets/Screenshot_20260113_160147_WeChat.jpg" alt="WeChat QR" />
+                    <span>WeChat</span>
+                  </figure>
+                </div>
               </div>
             </div>
           </section>
@@ -366,8 +431,21 @@
               </div>
               <div>
                 <div class="label">Contact</div>
-                <p class="body-en">For inquiries, contact us via Naver TalkTalk or 0507-1368-2171 (text available).</p>
-                <p class="note">(DMs may be checked late.)</p>
+                <p class="body-en">Contact us via Naver TalkTalk, WhatsApp, WeChat, or 0507-1368-2171 (call or text).</p>
+                <div class="qr-row">
+                  <figure class="qr-card">
+                    <img src="../../../assets/naver-talktalk-qr.png" alt="Naver TalkTalk QR" />
+                    <span>TalkTalk</span>
+                  </figure>
+                  <figure class="qr-card">
+                    <img src="../../../assets/Screenshot_20260113_160043_WhatsApp.jpg" alt="WhatsApp QR" />
+                    <span>WhatsApp</span>
+                  </figure>
+                  <figure class="qr-card">
+                    <img src="../../../assets/Screenshot_20260113_160147_WeChat.jpg" alt="WeChat QR" />
+                    <span>WeChat</span>
+                  </figure>
+                </div>
               </div>
             </div>
           </section>

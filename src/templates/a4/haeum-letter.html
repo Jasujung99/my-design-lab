@@ -137,21 +137,33 @@
         font-size: 16px;
         color: var(--muted);
         line-height: 1.6;
+        display: grid;
+        gap: 2px;
+      }
+
+      .signature-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .signature-date {
+        color: var(--muted);
+      }
+
+      .signature-copy {
+        font-family: "Nanum Myeongjo", "Noto Serif KR", "Apple SD Gothic Neo", serif;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: none;
+        color: var(--muted);
+        white-space: nowrap;
       }
 
       .signature-block strong {
         font-size: 18px;
         color: var(--ink);
-      }
-
-      .copyright-meta {
-        margin-top: 10px;
-        text-align: right;
-        font-family: "Inter", sans-serif;
-        font-size: 12px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--muted);
       }
 
       .invitation {
@@ -287,11 +299,11 @@
           </section>
 
           <div class="signature-block">
-            <p>Dec 2025</p>
-            <strong>Letters for the still-beating</strong>
+            <div class="signature-row">
+              <span class="signature-date">Dec 2025</span>
+              <span class="signature-copy">&copy; 저작권은 해움한국어에 있습니다.</span>
+            </div>
           </div>
-          <p class="copyright-meta">&copy; 저작권은 해움한국어에 있습니다.</p>
-          <p class="copyright-meta">&copy; 저작권은 해움한국어에 있습니다.</p>
         </main>
       </div>
     </div>

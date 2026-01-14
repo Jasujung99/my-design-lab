@@ -31,13 +31,13 @@
         justify-content: center;
         align-items: flex-start;
         gap: 16px;
-        padding: 14px 24px;
+        padding: 24px 32px;
       }
 
       .page {
         position: relative;
-        width: 1240px;
-        height: 1754px;
+        width: 2384px;
+        height: 3368px;
         margin: 0;
         background: var(--paper-bg);
         overflow: hidden;
@@ -62,495 +62,561 @@
       }
 
       .render-mode .controls {
-        display: none !important;
-      }
+        <head>
+          <meta charset="utf-8" />
+          <title>해움한국어 수강 등록 신청서</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link href="../common/base.css" rel="stylesheet" />
+          <link href="../common/paper-a4.css" rel="stylesheet" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+          <style>
+            :root {
+              --paper-bg: #f7efe3;
+              --ink: #2f241a;
+              --muted: #806c5a;
+              --accent: #c48f5a;
+              --border: rgba(140, 112, 86, 0.28);
+              --panel: rgba(255, 255, 255, 0.9);
+            }
 
-      .controls button {
-        appearance: none;
-        border: none;
-        border-radius: 6px;
-        padding: 6px 11px;
-        font-size: 10.5px;
-        font-weight: 600;
-        letter-spacing: 0.35px;
-        color: white;
-        background: linear-gradient(135deg, rgba(196, 143, 90, 0.9), rgba(156, 108, 70, 0.9));
-        cursor: pointer;
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
-      }
+            html,
+            body {
+              background: #f2e8d9 !important;
+              color: var(--ink);
+              font-family: "Noto Sans KR", -apple-system, "Segoe UI", sans-serif;
+            }
 
-      .controls button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(156, 108, 70, 0.35);
-      }
+            .page {
+              width: 2384px;
+              height: 3368px;
+              margin: 0 auto;
+              background: var(--paper-bg);
+            }
 
-      .controls button:active {
-        transform: translateY(0);
-        box-shadow: none;
-      }
+            .canvas {
+              padding: 80px 96px 96px;
+              display: flex;
+              flex-direction: column;
+              gap: 32px;
+            }
 
-      .canvas {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 1px;
-        min-height: 100%;
-        padding: 10px 20px 12px;
-        font-family: "Noto Sans KR", -apple-system, "Segoe UI", sans-serif;
-        background: var(--paper-bg) !important;
-        box-sizing: border-box;
-      }
+            .hero {
+              display: grid;
+              gap: 12px;
+            }
 
-      .page .canvas {
-        padding: 10px 20px 12px !important;
-        height: 100%;
-        min-height: auto;
-      }
+            .hero-top {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
 
-      .header {
-        margin-bottom: 0;
-      }
+            .hero-badge {
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              padding: 10px 16px;
+              border-radius: 999px;
+              background: rgba(196, 143, 90, 0.14);
+              color: var(--accent);
+              font-weight: 700;
+              letter-spacing: 0.4px;
+              text-transform: uppercase;
+              font-size: 15px;
+            }
 
-      .brand {
-        display: grid;
-        gap: 8px;
-      }
+            .hero-meta {
+              display: inline-flex;
+              gap: 8px;
+              color: var(--muted);
+              font-weight: 600;
+            }
 
-      .brand h1 {
-        font-size: 20px;
-        line-height: 1.05;
-        margin: 0;
-        color: var(--ink);
-        font-weight: 700;
-      }
+            .pill {
+              padding: 6px 12px;
+              border-radius: 999px;
+              background: rgba(47, 36, 26, 0.06);
+              border: 1px solid rgba(47, 36, 26, 0.08);
+              font-size: 13px;
+            }
 
-      .divider {
-        height: 2px;
-        background: rgba(126, 104, 84, 0.35);
-        margin: 2px 0 0;
-      }
+            .hero-title {
+              margin: 0;
+              font-size: 46px;
+              line-height: 1.1;
+              font-weight: 800;
+              letter-spacing: -0.6px;
+            }
 
-      .section {
-        background: #ffffff;
-        border: 1px solid var(--border-soft);
-        border-radius: 8px;
-        padding: 5px 9px;
-        display: grid;
-        gap: 2px;
-      }
+            .hero-sub {
+              margin: 0;
+              color: var(--muted);
+              font-size: 18px;
+              line-height: 1.5;
+            }
 
-      .section-title {
-        display: flex;
-        align-items: baseline;
-        gap: 4px;
-        font-size: 11.8px;
-        font-weight: 700;
-        color: var(--ink);
-        margin: 0;
-        padding-bottom: 1px;
-        border-bottom: 2px solid rgba(196, 143, 90, 0.16);
-      }
+            .section-card {
+              background: var(--panel);
+              border: 1px solid var(--border);
+              border-radius: 18px;
+              padding: 32px 36px;
+              box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+              display: grid;
+              gap: 20px;
+            }
 
-      .section-title span {
-        font-size: 8.5px;
-        font-weight: 600;
-        color: var(--accent);
-        letter-spacing: 1.1px;
-        text-transform: uppercase;
-      }
+            .section-header {
+              display: flex;
+              align-items: baseline;
+              gap: 12px;
+            }
 
-      .terms {
-        column-count: 2;
-        column-gap: 8px;
-        font-size: 8.8px;
-        line-height: 1.16;
-        color: rgba(50, 42, 32, 0.75);
-      }
+            .section-header .eyebrow {
+              font-size: 13px;
+              font-weight: 800;
+              letter-spacing: 1.6px;
+              color: var(--accent);
+              text-transform: uppercase;
+            }
 
-      .terms > div {
-        break-inside: avoid;
-        margin-bottom: 1px;
-      }
+            .section-header h2 {
+              margin: 0;
+              font-size: 28px;
+              font-weight: 800;
+              letter-spacing: -0.4px;
+            }
 
-      .terms h2 {
-        font-size: 8.8px;
-        font-weight: 700;
-        margin: 0 0 1px;
-        color: var(--accent);
-        letter-spacing: 0.15px;
-      }
+            .grid-2 {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 18px 24px;
+            }
 
-      .terms ul {
-        padding-left: 8px;
-        margin: 1px 0 0;
-      }
+            .article {
+              background: rgba(255, 255, 255, 0.9);
+              border: 1px solid rgba(140, 112, 86, 0.18);
+              border-radius: 14px;
+              padding: 16px 18px;
+              display: grid;
+              gap: 10px;
+            }
 
-      .terms ol {
-        padding-left: 8px;
-        margin: 1px 0 0;
-      }
+            .article h3 {
+              margin: 0;
+              font-size: 18px;
+              font-weight: 800;
+              color: var(--ink);
+              letter-spacing: -0.2px;
+            }
 
-      .terms li {
-        margin-bottom: 0;
-      }
+            .article p {
+              margin: 0;
+              font-size: 15px;
+              line-height: 1.55;
+              color: #4b3c2f;
+            }
 
-      .terms p {
-        margin: 1px 0;
-      }
+            .article ul,
+            .article ol {
+              margin: 4px 0 0;
+              padding-left: 18px;
+              color: #4b3c2f;
+              line-height: 1.5;
+              font-size: 15px;
+            }
 
-      .quote {
-        border-left: 3px solid rgba(196, 143, 90, 0.5);
-        padding: 3px 6px;
-        background: #faf6f0;
-        border-radius: 5px;
-        margin: 1px 0;
-        break-inside: avoid;
-      }
+            .article li + li {
+              margin-top: 2px;
+            }
 
-      .quote strong {
-        color: var(--accent);
-        font-weight: 700;
-      }
+            .callout {
+              border-left: 4px solid var(--accent);
+              background: rgba(196, 143, 90, 0.08);
+              padding: 10px 12px;
+              border-radius: 10px;
+              font-size: 14px;
+              line-height: 1.5;
+              color: #4b3c2f;
+              display: grid;
+              gap: 6px;
+            }
 
-      .checks {
-        display: grid;
-        gap: 2px;
-        font-size: 8.8px;
-        line-height: 1.14;
-      }
+            .callout strong {
+              color: var(--accent);
+              font-weight: 800;
+            }
 
-      .check-item {
-        display: grid;
-        grid-template-columns: 8px 1fr;
-        gap: 3px;
-        align-items: center;
-      }
+            .refund-example {
+              margin-top: 10px;
+              border: 1px dashed rgba(196, 143, 90, 0.6);
+              border-radius: 12px;
+              background: linear-gradient(120deg, rgba(196, 143, 90, 0.08), rgba(255, 255, 255, 0.92));
+              padding: 12px 14px;
+              display: grid;
+              gap: 10px;
+            }
 
-      .check-box {
-        width: 8px;
-        height: 8px;
-        border-radius: 2px;
-        border: 2px solid rgba(156, 116, 85, 0.8);
-        background: rgba(255, 255, 255, 0.96);
-      }
+            .refund-title {
+              font-weight: 800;
+              color: #4b3c2f;
+              font-size: 15px;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+            }
 
-      .two-column {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4px;
-      }
+            .refund-steps {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+              gap: 10px;
+            }
 
-      .note-panel {
-        border-radius: 6px;
-        border: 1px solid rgba(180, 140, 102, 0.26);
-        background: #faf6f0;
-        padding: 4px;
-        display: grid;
-        gap: 1px;
-        font-size: 8.6px;
-        line-height: 1.12;
-        color: rgba(50, 42, 32, 0.72);
-      }
+            .refund-step {
+              padding: 10px 12px;
+              border-radius: 10px;
+              background: rgba(255, 255, 255, 0.9);
+              border: 1px solid rgba(196, 143, 90, 0.25);
+              display: grid;
+              gap: 4px;
+            }
 
-      .note-panel strong {
-        font-size: 8.4px;
-        color: var(--accent);
-        font-weight: 700;
-      }
+            .refund-step .label {
+              font-size: 12px;
+              text-transform: uppercase;
+              color: #8b7664;
+              letter-spacing: 0.6px;
+              font-weight: 700;
+            }
 
-      .note-panel ul {
-        padding-left: 8px;
-        margin: 1px 0;
-      }      .note-panel li {
-        margin-bottom: 0;
-      }
+            .refund-step strong {
+              font-size: 18px;
+              letter-spacing: -0.2px;
+              color: #2f241a;
+            }
 
-      .registration-form {
-        display: grid;
-        gap: 2px;
-        font-size: 8.8px;
-        line-height: 1.12;
-        color: rgba(50, 42, 32, 0.75);
-      }
+            .refund-step.negative strong {
+              color: #b15040;
+            }
 
-      .form-row {
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        align-items: center;
-        gap: 3px;
-        padding-bottom: 2px;
-        border-bottom: 1px dotted rgba(144, 112, 83, 0.18);
-      }
+            .refund-step.result {
+              background: rgba(196, 143, 90, 0.12);
+              border-color: rgba(196, 143, 90, 0.45);
+            }
 
-      .form-row:last-child {
-        border-bottom: none;
-      }
+            .checks {
+              display: grid;
+              gap: 10px;
+              font-size: 18px;
+              line-height: 1.5;
+              color: #2f241a;
+            }
 
-      .form-label {
-        font-weight: 700;
-        letter-spacing: 0.1px;
-        color: var(--ink);
-        font-size: 8.6px;
-      }
+            .check-item {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            }
 
-      .form-blank {
-        min-height: 10px;
-        border-bottom: 1px solid rgba(144, 112, 83, 0.18);
-      }
+            .check-box {
+              width: 20px;
+              height: 20px;
+              border-radius: 4px;
+              border: 2px solid rgba(47, 36, 26, 0.35);
+              background: #fff;
+            }
 
-      .footer-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 8.2px;
-        color: rgba(50, 42, 32, 0.48);
-        padding-top: 2px;
-        border-top: 1px solid rgba(144, 112, 83, 0.08);
-        margin-top: auto;
-      }
+            .form-card {
+              gap: 28px;
+            }
 
-      .footer-meta strong {
-        color: var(--ink);
-      }
+            .form-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 24px;
+            }
 
-      @media (max-width: 1360px) {
-        .layout {
-          flex-direction: column;
-          align-items: center;
-          padding: 16px;
-          gap: 16px;
-        }
+            .form-block {
+              background: rgba(255, 255, 255, 0.9);
+              border: 1px solid rgba(140, 112, 86, 0.2);
+              border-radius: 14px;
+              padding: 20px 22px;
+              display: grid;
+              gap: 12px;
+              color: #2b241c;
+            }
 
-        .controls {
-          position: static;
-          width: 100%;
-          max-width: 320px;
-        }
-      }
+            .staff-block,
+            .member-block {
+              border-color: rgba(196, 143, 90, 0.32);
+              box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+            }
 
-      @media print {
-        .layout {
-          display: block;
-          padding: 0;
-          margin: 0;
-          background: transparent;
-        }
-        .controls {
-          display: none !important;
-        }
-        .page {
-          box-shadow: none;
-          border: none;
-          margin: 0 auto;
-          page-break-after: avoid !important;
-          break-after: avoid !important;
-        }
-        .canvas {
-          padding: 16px 22px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="layout">
-      <div class="page">
-        <main class="canvas">
-        <header class="header">
-          <div class="brand">
-            <h1>해움한국어 수강 등록 신청서</h1>
-            <div class="divider" aria-hidden="true"></div>
+            .form-title {
+              margin: 0;
+              font-size: 18px;
+              font-weight: 800;
+              letter-spacing: -0.2px;
+              color: var(--accent);
+            }
+
+            .line-field {
+              display: grid;
+              grid-template-columns: 170px 1fr;
+              align-items: center;
+              gap: 10px;
+              font-size: 15px;
+              color: #2b241c;
+            }
+
+            .line-field .label {
+              font-weight: 800;
+              color: #231c16;
+            }
+
+            .line-field .line {
+              border-bottom: 1px solid rgba(47, 36, 26, 0.2);
+              min-height: 20px;
+            }
+
+            .note {
+              margin: 0;
+              font-size: 13px;
+              color: var(--muted);
+            }
+
+            .footer-meta {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-size: 13px;
+              color: var(--muted);
+              border-top: 1px solid rgba(47, 36, 26, 0.08);
+              padding-top: 12px;
+            }
+
+            @media print {
+              .page {
+                box-shadow: none;
+                margin: 0 auto;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="page">
+            <main class="canvas">
+              <header class="hero">
+                <div class="hero-top">
+                  <div class="hero-badge">Enrollment</div>
+                  <div class="hero-meta">
+                    <span class="pill">v3</span>
+                    <span class="pill">2026.01.13</span>
+                  </div>
+                </div>
+                <h1 class="hero-title">해움한국어 수강 등록 신청서</h1>
+                <p class="hero-sub">등록 · 환불 · 출결 · 개인정보 안내를 확인한 뒤 동의해 주세요. 장기 등록 및 그룹 할인, 환불 규정이 포함되어 있습니다.</p>
+              </header>
+
+              <section class="section-card">
+                <div class="section-header">
+                  <span class="eyebrow">Terms</span>
+                  <h2>서비스 이용 약관</h2>
+                </div>
+                <div class="grid-2">
+                  <div class="article">
+                    <h3>제1조 목적</h3>
+                    <p>해움한국어(이하 "기관")가 제공하는 교육 서비스의 이용 조건과 절차를 정합니다.</p>
+
+                    <h3>제2조 정의</h3>
+                    <ul>
+                      <li>회원: 기관에 수강 등록을 완료한 자</li>
+                      <li>서비스: 온·오프라인 강의, 교재, 상담 등 교육 관련 서비스 일체</li>
+                    </ul>
+
+                    <h3>제3조 등록 및 운영</h3>
+                    <ol>
+                      <li>신청서는 회원 또는 보호자가 사실대로 작성하며, 결제 완료 시 등록이 확정됩니다.</li>
+                      <li><strong>수강료는 월말 기준으로 계산하며 최소 4주 수강을 보장</strong>합니다. 등록일부터 해당 월 말일까지 4주 미만인 경우 수강 기간은 다음 달 말일까지로 계산합니다.</li>
+                      <li>학습 효과 향상을 위해 일정·커리큘럼이 변경될 수 있으며, 공휴일 수업 여부와 보강 계획은 사전에 안내합니다.</li>
+                    </ol>
+
+                    <h3>제4조 수강료·환불·일시중지</h3>
+                    <ol>
+                      <li>수강료는 안내된 방법과 기한에 따라 납부합니다.</li>
+                      <li><strong>월 수업 시수가 8회 미만이면 주 1회 수업료를 적용</strong>합니다.</li>
+                      <li><strong>장기 등록·그룹 등록 시 할인 적용</strong></li>
+                    </ol>
+                    <div class="callout">
+                      <strong>&lt;할인 정책&gt;</strong>
+                      <ul>
+                        <li>8주 이상: 5% 할인</li>
+                        <li>16주 이상: 10% 할인</li>
+                        <li>그룹(2인 이상): 별도 안내된 할인율 적용</li>
+                        <li>할인 중복 불가: 기간 할인과 그룹 할인 중 더 큰 할인만 적용</li>
+                        <li>수강 기간: 월말 기준, 최소 4주 보장</li>
+                      </ul>
+                    </div>
+                    <div class="callout">
+                      <strong>&lt;환불 규정&gt;</strong>
+                      <ul>
+                        <li>수강 시작 전일까지: 전액 환불 (재료비·등록비 제외)</li>
+                        <li>수강 시작일 이후: 수납액 25% 위약 + 실제 수강분 + 할인액 회수 후 잔액 환불</li>
+                        <li>예시: 정가 100만 → 10% 할인 수납 90만, 20만 수강 후 환불 = 90만 - 22.5만 - 20만 - 10만 = <strong>37.5만</strong> (아래 계산 카드 참고)</li>
+                        <li>연기: 수강 기간 중 1회, 사전 통지 및 증빙 필요</li>
+                        <li>양도: 1회, 수수료 3만원</li>
+                        <li>처리 기한: 카드 3~7영업일, 계좌 1~3영업일</li>
+                      </ul>
+                      <div class="refund-example" aria-label="환불 계산 예시">
+                        <div class="refund-title">환불 계산 예시 (할인 적용 후)</div>
+                        <div class="refund-steps">
+                          <div class="refund-step">
+                            <span class="label">납부 금액</span>
+                            <strong>900,000원</strong>
+                          </div>
+                          <div class="refund-step negative">
+                            <span class="label">위약금 (25%)</span>
+                            <strong>-225,000원</strong>
+                          </div>
+                          <div class="refund-step negative">
+                            <span class="label">실제 수강분</span>
+                            <strong>-200,000원</strong>
+                          </div>
+                          <div class="refund-step negative">
+                            <span class="label">할인액 회수</span>
+                            <strong>-100,000원</strong>
+                          </div>
+                          <div class="refund-step result">
+                            <span class="label">환불 예정액</span>
+                            <strong>375,000원</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="article">
+                    <h3>제5조 출결·보강·자료 이용</h3>
+                    <ol>
+                      <li>결석·지각 시 즉시 통지. <strong>24시간 전 사전 통지</strong> 권장, 당일 통보는 환불 불가 (온라인은 수업 시간의 50% 이상 지각 시 결석 처리).</li>
+                      <li><strong>연기/보강 기준:</strong> 경조사·질병 등 증빙 있는 불가피 사유만 가능. 여행·개인 일정 등은 연기·취소·환불 불가. 보강은 사전 합의된 일정 범위 내에서 제공.</li>
+                      <li>제공 자료는 수업 목적 내에서만 사용하며 무단 복제·배포를 금지합니다.</li>
+                    </ol>
+
+                    <h3>제6조 시설 이용 및 안전</h3>
+                    <p>공동 시설·비품은 소중히 사용하며 파손 시 기관 규정에 따릅니다. 안전 수칙을 준수하고 금지 물품 반입을 제한합니다.</p>
+
+                    <h3>제7조 질서 유지 및 이용 제한</h3>
+                    <p>수업을 방해하거나 타인의 권리를 침해하면 경고, 이용 제한, 등록 취소 등 조치가 가능합니다.</p>
+
+                    <h3>제8조 불가항력</h3>
+                    <p>천재지변·감염병 등 예측 불가 사유로 일정 변경 시 대체 수업 또는 환불 등 적절한 조치를 제공합니다. 환불은 수업 일수에 따라 차등 적용될 수 있습니다.</p>
+
+                    <h3>제9조 분쟁 해결</h3>
+                    <ol>
+                      <li>분쟁은 우선 당사자 협의로 해결을 시도합니다.</li>
+                      <li>협의 실패 시 관련 법령(예: 소비자기본법) 절차에 따르며, 서면·이메일 요청 후 <strong>14일 이내</strong> 처리합니다.</li>
+                    </ol>
+
+                    <h3>제10조 개인정보 및 촬영물</h3>
+                    <div class="callout">
+                      <strong>〈개인정보 처리방침〉</strong>
+                      <ul>
+                        <li>목적: 회원 관리, 수업 제공, 결제·정산, 민원 처리, 고지 안내</li>
+                        <li>보유: 목적 달성 시 또는 정책·고지 기간까지 보관 후 파기</li>
+                        <li>제3자 제공·처리위탁: 서비스 제공 범위 내에서 사전 고지·동의</li>
+                        <li>권리: 열람·정정·삭제·처리정지·동의철회 요청 가능</li>
+                      </ul>
+                    </div>
+                    <div class="callout">
+                      <strong>〈사진·영상 촬영 및 활용〉</strong>
+                      <ul>
+                        <li>목적: 기관 공식 홍보, 초상권 침해 없는 범위</li>
+                        <li>범위: 수업 활동·결과물 (홈페이지, SNS, 브로셔 등 공식 채널 및 내부 보고)</li>
+                        <li>제작/송출: 편집·각색 후 게시, 얼굴·음성 등 식별 정보는 모자이크·변조</li>
+                        <li>동의 철회: 서면 또는 이메일로 언제든 철회 가능 (접수 이후 촬영분부터 중지)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="section-card">
+                <div class="section-header">
+                  <span class="eyebrow">Agreement</span>
+                  <h2>확인 및 동의</h2>
+                </div>
+                <div class="checks">
+                  <label class="check-item">
+                    <span class="check-box" aria-hidden="true"></span>
+                    <span>(필수) 서비스 이용약관 및 환불 규정을 확인하고 동의합니다.</span>
+                  </label>
+                  <label class="check-item">
+                    <span class="check-box" aria-hidden="true"></span>
+                    <span>(필수) 개인정보 수집·이용에 동의합니다.</span>
+                  </label>
+                  <label class="check-item">
+                    <span class="check-box" aria-hidden="true"></span>
+                    <span>(선택) 사진·영상 촬영 및 활용에 동의합니다.</span>
+                  </label>
+                </div>
+              </section>
+
+              <section class="section-card form-card">
+                <div class="form-grid">
+                  <div class="form-block staff-block">
+                    <h3 class="form-title">STAFF · 담당자 작성부</h3>
+                    <div class="line-field">
+                      <span class="label">수강 과목</span>
+                      <div class="line"></div>
+                    </div>
+                    <div class="line-field">
+                      <span class="label">수강 기간</span>
+                      <div class="line"></div>
+                    </div>
+                    <div class="line-field" style="align-items: start;">
+                      <span class="label">특이사항</span>
+                      <div class="line" style="min-height: 64px;"></div>
+                    </div>
+                  </div>
+
+                  <div class="form-block member-block">
+                    <h3 class="form-title">MEMBER · 회원 작성부</h3>
+                    <div class="line-field">
+                      <span class="label">등록일</span>
+                      <div class="line"></div>
+                    </div>
+                    <div class="line-field">
+                      <span class="label">성함 (서명)</span>
+                      <div class="line"></div>
+                    </div>
+                    <div class="line-field">
+                      <span class="label">연락처</span>
+                      <div class="line"></div>
+                    </div>
+                    <div class="line-field">
+                      <span class="label">비상 연락처 (보호자)</span>
+                      <div class="line"></div>
+                    </div>
+                    <div class="line-field">
+                      <span class="label">Email</span>
+                      <div class="line"></div>
+                    </div>
+                    <div class="line-field">
+                      <span class="label">온라인 강의용 Gmail</span>
+                      <div class="line"></div>
+                    </div>
+                    <p class="note">* 온라인 강의의 경우 Gmail 주소를 적어주세요.</p>
+                  </div>
+                </div>
+                <div class="footer-meta">
+                  <span>사업자등록번호: 225-08-94665</span>
+                  <strong>상호: 해움한국어 | 대표: 백기인</strong>
+                </div>
+              </section>
+            </main>
           </div>
-        </header>
-
-        <section class="section">
-          <h2 class="section-title"><span>Terms</span>서비스 이용 약관</h2>
-          <div class="terms">
-            <div>
-              <h2>제1조 목적</h2>
-              <p>이 약관은 해움한국어(이하 "기관")가 제공하는 교육 서비스의 이용 조건 및 절차를 정합니다.</p>
-            </div>
-            <div>
-              <h2>제2조 정의</h2>
-              <ul>
-                <li>"회원": 기관에 수강 등록을 완료한 자</li>
-                <li>"서비스": 기관이 제공하는 온·오프라인 강의, 교재, 상담 등 교육 관련 서비스 일체</li>
-              </ul>
-            </div>
-            <div>
-              <h2>제3조 등록 및 운영</h2>
-              <ol>
-                <li>신청서는 회원 또는 보호자가 사실대로 작성하며, 결제 완료 시 등록이 확정됩니다.</li>
-                <li>학습 효과 향상을 위해 일정 및 커리큘럼이 변경될 수 있습니다. 공휴일 수업 여부와 보강 계획은 사전에 안내합니다.</li>
-              </ol>
-            </div>
-            <div>
-              <h2>제4조 수강료, 환불 및 일시중지</h2>
-              <ol>
-                <li>수강료는 안내된 방법과 기한에 따라 납부합니다.</li>
-                <li>환불은 아래 규정을 따릅니다.</li>
-              </ol>
-              <div class="quote">
-                <strong>&lt;환불 규정&gt;</strong>
-                <ul>
-                  <li>수강 시작 전일까지: 전액 환불 (재료비 및 등록비 제외)</li>
-                  <li>수강 시작일 이후: 위약금(수납액의 20%)을 제외하고, 실제 수강분을 제외한 나머지 환불</li>
-                  <li>연기: 수강 기간 중 1회 연기 가능, 사전 통지 및 자료 증빙 필요</li>
-                  <li>양도: 1회 양도 가능, 양도 수수료 30,000원</li>
-                  <li>환불 처리 기한: 카드 3~7영업일, 계좌 1~3영업일</li>
-                </ul>
-              </div>
-            </div>
-            <div>
-              <h2>제5조 출결, 보강 및 자료 이용</h2>
-              <ol>
-                <li>결석·지각 시 가능한 빨리 통지합니다. 개인 사정으로 인한 결석은 보강이 제한될 수 있으며, 보강 가능 여부와 방식은 기관의 재량에 따릅니다.</li>
-              </ol>
-              <div class="quote">
-                <ul>
-                  <li><strong>사전 통지 의무:</strong> 결석 또는 지각이 예상될 경우 수업 시작 24시간 전까지 통지</li>
-                  <li><strong>당일 통보 시 환불 불가:</strong> 당일 통보된 결석·지각은 해당 일자 수강료 환불 불가 (온라인 강의는 전체 수업 시간의 50% 이상 지각 시 결석 처리)</li>
-                  <li><strong>보강 제한:</strong> 개인 사정으로 인한 결석은 기관 방침에 따라 보강이 제한됩니다.</li>
-                </ul>
-              </div>
-              <p>제공되는 자료와 교재는 수업 목적 내에서만 사용하며, 무단 복제·배포를 금지합니다.</p>
-            </div>
-            <div>
-              <h2>제6조 시설 이용 및 안전</h2>
-              <p>공동 시설과 비품은 소중히 사용하며, 파손 시 기관 규정에 따라 조치합니다. 안전 수칙을 준수하고 금지 물품 반입을 제한합니다.</p>
-            </div>
-            <div>
-              <h2>제7조 질서 유지 및 이용 제한</h2>
-              <p>수업을 방해하거나 타인의 권리를 침해하는 행위가 발생할 경우 경고, 이용 제한, 등록 취소 등 조치를 취할 수 있습니다.</p>
-            </div>
-            <div>
-              <h2>제8조 불가항력</h2>
-              <p>천재지변, 감염병 등 예측 불가능한 사유로 수업 일정이 변경될 경우, 기관은 대체 수업 제공 또는 환불 등 적절한 조치를 제공합니다. 환불은 수업 일수에 따라 차등 적용될 수 있습니다.</p>
-            </div>
-            <div>
-              <h2>제9조 분쟁 해결</h2>
-              <ol>
-                <li>분쟁 발생 시 당사자 간 우선 협의합니다. 협의가 성립되지 않을 경우 관련 법령(예: 「소비자기본법」)에 따른 절차를 따릅니다.</li>
-                <li>협의 요청은 서면 또는 이메일로 진행하며, 처리 기간은 14일 이내입니다.</li>
-              </ol>
-            </div>
-          </div>
-        </section>
-
-        <div class="two-column">
-          <section class="section">
-            <h2 class="section-title"><span>Agreement</span>확인 및 동의</h2>
-            <div class="checks">
-              <label class="check-item">
-                <span class="check-box"></span>
-                <span>(필수) 서비스 이용약관 및 환불 규정을 확인하고 동의합니다.</span>
-              </label>
-              <label class="check-item">
-                <span class="check-box"></span>
-                <span>(필수) 개인정보 수집·이용에 동의합니다.</span>
-              </label>
-              <label class="check-item">
-                <span class="check-box"></span>
-                <span>(선택) 사진·영상 촬영 및 활용에 동의합니다.</span>
-              </label>
-            </div>
-            <div class="note-panel">
-              <strong>〈개인정보 처리방침〉</strong>
-              <ul>
-                <li>수집·이용 목적: 회원 관리, 수업 제공, 결제·정산, 민원 처리 및 고지 안내</li>
-                <li>보유·이용 기간: 목적 달성 시 또는 내부 정책에 따라 보관 후 파기</li>
-                <li>제3자 제공·처리위탁: 서비스 제공에 필요한 범위에서 사전 고지·동의 후 진행</li>
-                <li>정보주체 권리: 열람·정정·삭제·처리정지·동의철회 요청 가능 (문의 창구 기재)</li>
-              </ul>
-              <strong>〈사진·영상 촬영 및 활용〉</strong>
-              <ul>
-                <li>목적: 기관 공식 홍보용. 초상권 침해 우려 없는 범위에서 활용</li>
-                <li>활용 범위: 수업 활동 모습·결과물 (홈페이지, SNS, 브로셔 등 공식 채널 및 내부 보고)</li>
-                <li>제작·송출: 편집·각색 후 게시. 얼굴·음성 등 식별 정보는 모자이크 또는 변조 처리</li>
-                <li>동의 철회: 서면 또는 이메일로 언제든 철회 가능 (접수 이후 촬영분부터 사용 중지)</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="section">
-            <h2 class="section-title"><span>Staff</span>담당자 작성부</h2>
-            <div class="registration-form">
-              <div class="form-row">
-                <span class="form-label">수강 과목</span>
-                <span class="form-blank"></span>
-              </div>
-              <div class="form-row">
-                <span class="form-label">수강 기간</span>
-                <span class="form-blank"></span>
-              </div>
-              <div class="form-row">
-                <span class="form-label">특이사항</span>
-                <span class="form-blank" style="min-height: 40px;"></span>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <section class="section">
-          <h2 class="section-title"><span>Member</span>회원 작성부</h2>
-          <div class="registration-form">
-            <div class="form-row">
-              <span class="form-label">등록일</span>
-              <span class="form-blank"></span>
-            </div>
-            <div class="form-row">
-              <span class="form-label">성    함 (서명)</span>
-              <span class="form-blank"></span>
-            </div>
-            <div class="form-row">
-              <span class="form-label">연락처</span>
-              <span class="form-blank"></span>
-            </div>
-            <div class="form-row">
-              <span class="form-label">비상 연락처 (보호자)</span>
-              <span class="form-blank"></span>
-            </div>
-            <div class="form-row">
-              <span class="form-label">Email</span>
-              <span class="form-blank"></span>
-            </div>
-            <div class="form-row">
-              <span class="form-label">온라인 강의용 Gmail</span>
-              <span class="form-blank"></span>
-            </div>
-          </div>
-          <p class="note-panel" style="margin-top: 4px;">
-            * 온라인 강의의 경우 Gmail 주소를 적어주세요.
-          </p>
-        </section>
-
-        <footer class="footer-meta">
-          <span>사업자등록번호: 225-08-94665</span>
-          <strong>상호: 해움한국어 | 대표: 백기인</strong>
-        </footer>
-        </main>
+        </body>
+      </html>
       </div>
-      <aside class="controls" aria-label="미리보기 도구">
-        <span>문서를 PDF로 저장하려면 버튼을 눌러주세요.</span>
-        <button type="button" id="download-pdf">PDF로 저장</button>
-      </aside>
-    </div>
-  </body>
-  <script>
-    (function () {
-      var downloadBtn = document.getElementById("download-pdf");
-      if (downloadBtn) {
-        downloadBtn.addEventListener("click", function () {
-          window.print();
-        });
-      }
-
-      function updateRenderMode() {
-        var compact = window.innerWidth <= 1360;
-        document.body.classList.toggle("render-mode", compact);
-      }
-
-      updateRenderMode();
-      window.addEventListener("resize", updateRenderMode);
-    })();
-  </script>
-</html>
